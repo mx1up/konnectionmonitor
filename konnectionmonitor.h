@@ -21,7 +21,7 @@ public slots:
     void onRefreshButton_clicked();
     void onRefreshButton_toggled(bool checked);
     void onAutoRefreshCB_toggled(bool checked);
-
+    void onRootModeButton_clicked();
     void setRefreshInterval(int interval);
 
 protected:

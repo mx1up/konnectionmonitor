@@ -1,7 +1,8 @@
-<ui version="4.0" >
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
  <class>KonnectionMonitorClass</class>
- <widget class="QMainWindow" name="KonnectionMonitorClass" >
-  <property name="geometry" >
+ <widget class="QMainWindow" name="KonnectionMonitorClass">
+  <property name="geometry">
    <rect>
     <x>0</x>
     <y>0</y>
@@ -9,53 +10,53 @@
     <height>400</height>
    </rect>
   </property>
-  <property name="windowTitle" >
+  <property name="windowTitle">
    <string>MainWindow</string>
   </property>
-  <widget class="QWidget" name="centralwidget" >
-   <layout class="QGridLayout" >
-    <item row="0" column="0" >
-     <widget class="QPushButton" name="refreshButton" >
-      <property name="text" >
+  <widget class="QWidget" name="centralwidget">
+   <layout class="QGridLayout" name="gridLayout">
+    <item row="0" column="0">
+     <widget class="QPushButton" name="refreshButton">
+      <property name="text">
        <string>Refresh</string>
       </property>
      </widget>
     </item>
-    <item row="0" column="1" >
-     <widget class="QCheckBox" name="autoRefreshCB" >
-      <property name="text" >
+    <item row="0" column="1">
+     <widget class="QCheckBox" name="autoRefreshCB">
+      <property name="text">
        <string>every</string>
       </property>
      </widget>
     </item>
-    <item row="0" column="2" >
-     <widget class="QSpinBox" name="autoRefreshSB" >
-      <property name="correctionMode" >
+    <item row="0" column="2">
+     <widget class="QSpinBox" name="autoRefreshSB">
+      <property name="correctionMode">
        <enum>QAbstractSpinBox::CorrectToNearestValue</enum>
       </property>
-      <property name="suffix" >
+      <property name="suffix">
        <string> msecs</string>
       </property>
-      <property name="minimum" >
+      <property name="minimum">
        <number>1</number>
       </property>
-      <property name="maximum" >
+      <property name="maximum">
        <number>60000</number>
       </property>
-      <property name="singleStep" >
+      <property name="singleStep">
        <number>500</number>
       </property>
-      <property name="value" >
+      <property name="value">
        <number>1000</number>
       </property>
      </widget>
     </item>
-    <item row="0" column="3" >
+    <item row="0" column="3">
      <spacer>
-      <property name="orientation" >
+      <property name="orientation">
        <enum>Qt::Horizontal</enum>
       </property>
-      <property name="sizeHint" >
+      <property name="sizeHint" stdset="0">
        <size>
         <width>40</width>
         <height>20</height>
@@ -63,22 +64,29 @@
       </property>
      </spacer>
     </item>
-    <item row="1" column="0" colspan="4" >
-     <widget class="QTableView" name="connectionTableView" />
+    <item row="0" column="4">
+     <widget class="QPushButton" name="rootModeButton">
+      <property name="text">
+       <string>Root mode</string>
+      </property>
+     </widget>
+    </item>
+    <item row="1" column="0" colspan="5">
+     <widget class="QTableView" name="connectionTableView"/>
     </item>
    </layout>
   </widget>
-  <widget class="QMenuBar" name="menubar" >
-   <property name="geometry" >
+  <widget class="QMenuBar" name="menubar">
+   <property name="geometry">
     <rect>
      <x>0</x>
      <y>0</y>
      <width>588</width>
-     <height>19</height>
+     <height>20</height>
     </rect>
    </property>
   </widget>
-  <widget class="QStatusBar" name="statusbar" />
+  <widget class="QStatusBar" name="statusbar"/>
  </widget>
  <resources/>
  <connections/>

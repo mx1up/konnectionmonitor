@@ -4,6 +4,9 @@
 #include <QtDebug>
 #include <QHeaderView>
 #include <QSettings>
+#include <QProcess>
+#include <QApplication>
+#include <QCoreApplication>
 
 #include "ConnectionListProvider.h"
 
@@ -52,6 +55,12 @@ void KonnectionMonitor::initGUI()
 
     connect(ui.autoRefreshCB, SIGNAL(toggled(bool)), this, SLOT(onAutoRefreshCB_toggled(bool)));
     connect(ui.autoRefreshSB, SIGNAL(valueChanged(int)), this, SLOT(setRefreshInterval(int)));
+    connect(ui.rootModeButton, SIGNAL(clicked()), this, SLOT(onRootModeButton_clicked()));
+    QProcess idProcess;
+    idProcess.start("id -u");
+    if (idProcess.waitForFinished(5000)) {
+        if (QString(idProcess.readAllStandardOutput()).toInt() == 0) ui.rootModeButton->setEnabled(false);
+    }
 
     connect(&refreshTimer, SIGNAL(timeout()), this, SLOT(onRefreshButton_clicked()));
 
@@ -108,6 +117,13 @@ void KonnectionMonitor::onRefreshButton_clicked() {
 void KonnectionMonitor::onAutoRefreshCB_toggled(bool checked)
 {
     ui.refreshButton->setCheckable(checked);
+}
+
+void KonnectionMonitor::onRootModeButton_clicked()
+{
+    if (QProcess::startDetached(QString("kdesu -n -c %1").arg(QApplication::applicationFilePath()))) {
+        close();
+    }
 }
 
 void KonnectionMonitor::setRefreshInterval(int interval)
