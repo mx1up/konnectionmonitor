@@ -15,26 +15,26 @@ namespace nsKonnectionMonitor
 class ConnectionListProvider;
 
 class ConnectionListModel
-: public QAbstractTableModel
+    : public QAbstractTableModel
 {
-	Q_OBJECT
+    Q_OBJECT
 public:
-	ConnectionListModel(QObject* parent, ConnectionListProvider* connectionListProvider);
-	virtual ~ConnectionListModel();
-	
-	//QAbstractTableModel impl
-	int rowCount(const QModelIndex &parent = QModelIndex()) const;
-	int columnCount(const QModelIndex &parent = QModelIndex()) const { Q_UNUSED(parent); return 5;};
-	QVariant data(const QModelIndex &index, int role) const;
-	QVariant headerData(int section, Qt::Orientation orientation, int role = Qt::DisplayRole) const;
-	
-	void refresh();
+    ConnectionListModel(QObject* parent, ConnectionListProvider* connectionListProvider);
+    virtual ~ConnectionListModel();
+
+    //QAbstractTableModel impl
+    int rowCount(const QModelIndex &parent = QModelIndex()) const;
+    int columnCount(const QModelIndex &parent = QModelIndex()) const { Q_UNUSED(parent); return 5;};
+    QVariant data(const QModelIndex &index, int role) const;
+    QVariant headerData(int section, Qt::Orientation orientation, int role = Qt::DisplayRole) const;
+
+    void refresh();
 
 private:
-	void updateView();
+    void updateView();
 
-	QList<Connection*>* connections;
-	ConnectionListProvider* connectionListProvider;
+    QList<Connection*>* connections;
+    ConnectionListProvider* connectionListProvider;
 };
 
 }

@@ -20,20 +20,20 @@
 namespace nsKonnectionMonitor {
 
 /**
-	@author matthias sweertvaegher <gmatti3@gmail.com>
+@author matthias sweertvaegher <gmatti3@gmail.com>
 */
 class HostnameResolver : public QObject
 {
-	Q_OBJECT
+    Q_OBJECT
 public:
     HostnameResolver(QHash<QString, QString>* hostnameCache, QObject *parent = 0);
     virtual ~HostnameResolver();
-    
+
 public slots:
     void lookedUp(QHostInfo hostInfo);
 
 private:
-	QHash<QString, QString>* hostnameCache;
+    QHash<QString, QString>* hostnameCache;
 };
 
 }

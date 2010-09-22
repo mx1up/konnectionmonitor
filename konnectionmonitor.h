@@ -18,14 +18,14 @@ public:
     ~KonnectionMonitor();
     
 public slots:
-	void onRefreshButton_clicked();
-	void onRefreshButton_toggled(bool checked);
-	void onAutoRefreshCB_toggled(bool checked);
-	
-	void setRefreshInterval(int interval);
+    void onRefreshButton_clicked();
+    void onRefreshButton_toggled(bool checked);
+    void onAutoRefreshCB_toggled(bool checked);
+
+    void setRefreshInterval(int interval);
 
 protected:
-	virtual void closeEvent(QCloseEvent* event);
+    virtual void closeEvent(QCloseEvent* event);
 
 private:
     void initGUI();

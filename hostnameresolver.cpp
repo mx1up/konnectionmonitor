@@ -25,15 +25,15 @@ HostnameResolver::~HostnameResolver()
 
 void HostnameResolver::lookedUp(QHostInfo hostInfo)
 {
-	if (hostInfo.error() != QHostInfo::NoError) {
-         qDebug() << "Lookup failed:" << hostInfo.errorString();
-         return;
-     }
+    if (hostInfo.error() != QHostInfo::NoError) {
+        qDebug() << "Lookup failed:" << hostInfo.errorString();
+        return;
+    }
 
-     foreach (QHostAddress address, hostInfo.addresses()) {
-		qDebug() << "adding " << address.toString() << " -> " << hostInfo.hostName();
+    foreach (QHostAddress address, hostInfo.addresses()) {
+        qDebug() << "adding " << address.toString() << " -> " << hostInfo.hostName();
      	(*hostnameCache)[address.toString()] = hostInfo.hostName();
-     }
+    }
 }
 
 }
