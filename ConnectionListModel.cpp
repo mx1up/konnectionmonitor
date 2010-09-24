@@ -12,7 +12,7 @@ namespace nsKonnectionMonitor
 ConnectionListModel::ConnectionListModel(QObject* parent, ConnectionListProvider* connectionListProvider)
     : connectionListProvider(connectionListProvider)
 {
-    connections = new QList<Connection*>;
+    connections = new QList<Connection>;
 }
 
 ConnectionListModel::~ConnectionListModel()
@@ -33,11 +33,11 @@ QVariant ConnectionListModel::data(const QModelIndex &index, int role) const
     if (index.row() >= connections->size())
         return QVariant();
 
-    Connection* connection = connections->at(index.row());
+    Connection connection = connections->at(index.row());
     if (role == Qt::DisplayRole) {
         switch (index.column()) {
         case 0:
-            switch (connection->state) {
+            switch (connection.state) {
             case ESTBLSH:
                 return "ESTABLISHED";
             case SYNSENT:
@@ -66,7 +66,7 @@ QVariant ConnectionListModel::data(const QModelIndex &index, int role) const
                 return "OTHER_TODO";
             }
         case 1:
-            switch (connection->type)
+            switch (connection.type)
             {
             case TCP:
                 return "TCP";
@@ -76,30 +76,30 @@ QVariant ConnectionListModel::data(const QModelIndex &index, int role) const
                 return "RAW";
             }
         case 2:
-            if (!connection->sourceHostname.isNull()) {
-                return connection->sourceHostname + ":" + QString::number(connection->sourcePort);
+            if (!connection.sourceHostname.isNull()) {
+                return connection.sourceHostname + ":" + QString::number(connection.sourcePort);
             } else {
-                return connection->source.toString() + ":"+ QString::number(connection->sourcePort);
+                return connection.source.toString() + ":"+ QString::number(connection.sourcePort);
             }
         case 3:
 
-            if (!connection->destHostname.isNull()) {
-                return connection->destHostname + ":" + QString::number(connection->destPort);
+            if (!connection.destHostname.isNull()) {
+                return connection.destHostname + ":" + QString::number(connection.destPort);
             } else {
-                return connection->dest.toString() + ":"+ QString::number(connection->destPort);
+                return connection.dest.toString() + ":"+ QString::number(connection.destPort);
             }
-            // 				return connection->dest.toString() + ":"+ QString::number(connection->destPort);
+            // 				return connection.dest.toString() + ":"+ QString::number(connection.destPort);
         case 4:
-            return connection->process;
+            return connection.process;
         default:
             return QString("unknown column");
         }
     }
 
-    if (role == Qt::DecorationRole) {
-        if (connection->lastSeen.secsTo(lastRefresh) != 0) return Qt::red;
-        if (connection->firstSeen.secsTo(lastRefresh) < 3) return Qt::green;
-        return Qt::black;
+    if (role == Qt::BackgroundColorRole) {
+        if (connection.lastSeen.secsTo(lastRefresh) != 0) return Qt::red;
+        if (connection.firstSeen.secsTo(lastRefresh) < 3) return Qt::green;
+        return QVariant();
 
     }
 
@@ -138,19 +138,19 @@ QVariant ConnectionListModel::headerData(int section, Qt::Orientation orientatio
 void ConnectionListModel::refresh()
 {
     lastRefresh = QDateTime::currentDateTime();
-    QList<Connection*> newConnections = connectionListProvider->getConnectionList(lastRefresh);
-    foreach (Connection* conn, newConnections) {
+    QList<Connection> newConnections = connectionListProvider->getConnectionList(lastRefresh);
+    foreach (Connection conn, newConnections) {
         if (connections->contains(conn)) {
-            connections->at(connections->indexOf(conn))->lastSeen = conn->firstSeen;
+            (*connections)[connections->indexOf(conn)].lastSeen = conn.firstSeen;
         } else {
             connections->append(conn);
         }
     }
     QDateTime now = QDateTime::currentDateTime();
-    QList<Connection*>::iterator it;
+    QList<Connection>::iterator it;
     for (it = connections->begin(); it != connections->end();) {
-        Connection* conn = *it;
-        if (conn->lastSeen.secsTo(now) > 5) {
+        Connection conn = *it;
+        if (conn.lastSeen.secsTo(now) > 5) {
             it = connections->erase(it);
         } else {
             ++it;

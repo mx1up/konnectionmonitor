@@ -129,7 +129,7 @@ quint32 ProcNetConnectionListProvider::convertProcNetAddressToInt(QString addres
 */
 
 
-void ProcNetConnectionListProvider::parseProcNet(QString filename, QList<Connection*>* connectionList)
+void ProcNetConnectionListProvider::parseProcNet(QString filename, QList<Connection>* connectionList)
 {
     qDebug() << "parsing" << filename;
     //	QFile file("/proc/net/tcp");
@@ -196,15 +196,15 @@ void ProcNetConnectionListProvider::parseProcNet(QString filename, QList<Connect
             }
         }
         *connectionList
-                << new Connection(getAppName(inodeToPid[inodeNum]), connectionType, (ConnectionState)(state -1),
+                << Connection(getAppName(inodeToPid[inodeNum]), connectionType, (ConnectionState)(state -1),
                                   localHost, localPort, remoteHost, remotePort, lastRefresh, srcHostname, dstHostname);
     } while (!line.isNull());
 }
 
-QList<Connection*> ProcNetConnectionListProvider::getConnectionList(QDateTime timestamp)
+QList<Connection> ProcNetConnectionListProvider::getConnectionList(QDateTime timestamp)
 {
     lastRefresh = timestamp;
-    QList<Connection*> connections;
+    QList<Connection> connections;
     updateInodePidMap();
     // 	foreach (quint32 inode, inodeToPid.keys()) {
     // 		qDebug() << "inode -> pid " << inode << inodeToPid[inode];
@@ -227,12 +227,12 @@ MockConnectionListProvider::~MockConnectionListProvider()
 
 }
 
-QList<Connection*> MockConnectionListProvider::getConnectionList(QDateTime timestamp)
+QList<Connection> MockConnectionListProvider::getConnectionList(QDateTime timestamp)
 {
-    QList<Connection*> connections;
+    QList<Connection> connections;
     static int counter = 0;
     for (int i=0; i<=counter; i++) {
-        connections << new Connection(QString("process %1").arg(counter), TCP, ESTBLSH, QHostAddress("127.0.0.0"), 1234, QHostAddress("127.0.0.0"), 1234, timestamp);
+        connections << Connection(QString("process %1").arg(counter), TCP, ESTBLSH, QHostAddress("127.0.0.0"), 1234, QHostAddress("127.0.0.0"), 1234, timestamp);
     }
     counter++;
     return connections;

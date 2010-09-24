@@ -17,7 +17,7 @@ public:
     ConnectionListProvider();
     virtual ~ConnectionListProvider();
 
-    virtual QList<Connection*> getConnectionList(QDateTime timestamp) = 0;
+    virtual QList<Connection> getConnectionList(QDateTime timestamp) = 0;
 };
 /*
 class HostnameResolver : public QObject
@@ -40,13 +40,13 @@ public:
     ProcNetConnectionListProvider();
     virtual ~ProcNetConnectionListProvider();
 
-    virtual QList<Connection*> getConnectionList(QDateTime timestamp);
+    virtual QList<Connection> getConnectionList(QDateTime timestamp);
 
 private:
     void updateInodePidMap();
     QString getAppName(uint pid);
     quint32 convertProcNetAddressToInt(QString address);
-    void parseProcNet(QString filename, QList<Connection*>* connectionList);
+    void parseProcNet(QString filename, QList<Connection>* connectionList);
 
     QHash<quint32,quint32> inodeToPid;
     bool resolveHostnames;
@@ -61,7 +61,7 @@ public:
     MockConnectionListProvider();
     virtual ~MockConnectionListProvider();
 
-    virtual QList<Connection*> getConnectionList(QDateTime timestamp);
+    virtual QList<Connection> getConnectionList(QDateTime timestamp);
 };
 
 } //namespace nsKonnectionMonitor

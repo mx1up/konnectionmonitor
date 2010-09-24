@@ -33,7 +33,7 @@ public:
 private:
     void updateView();
 
-    QList<Connection*>* connections;
+    QList<Connection>* connections;
     ConnectionListProvider* connectionListProvider;
     QDateTime lastRefresh;
 };
