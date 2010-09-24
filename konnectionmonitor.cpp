@@ -55,7 +55,7 @@ void KonnectionMonitor::initGUI()
     connect(ui.autoRefreshCB, SIGNAL(toggled(bool)), this, SLOT(onAutoRefreshCB_toggled(bool)));
     connect(ui.autoRefreshSB, SIGNAL(valueChanged(int)), this, SLOT(setRefreshInterval(int)));
     connect(ui.rootModeButton, SIGNAL(clicked()), this, SLOT(onRootModeButton_clicked()));
-    ui.rootModeButton->setEnabled(rootMode);
+    ui.rootModeButton->setEnabled(!rootMode);
 
     connect(&refreshTimer, SIGNAL(timeout()), this, SLOT(onRefreshButton_clicked()));
 
