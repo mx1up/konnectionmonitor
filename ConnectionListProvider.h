@@ -17,7 +17,7 @@ public:
     ConnectionListProvider();
     virtual ~ConnectionListProvider();
 
-    virtual QList<Connection*> getConnectionList() = 0;
+    virtual QList<Connection*> getConnectionList(QDateTime timestamp) = 0;
 };
 /*
 class HostnameResolver : public QObject
@@ -40,7 +40,7 @@ public:
     ProcNetConnectionListProvider();
     virtual ~ProcNetConnectionListProvider();
 
-    virtual QList<Connection*> getConnectionList();
+    virtual QList<Connection*> getConnectionList(QDateTime timestamp);
 
 private:
     void updateInodePidMap();
@@ -52,6 +52,7 @@ private:
     bool resolveHostnames;
     QHash<QString, QString> hostnameCache;
     HostnameResolver* hostnameResolver;
+    QDateTime lastRefresh;
 };
 
 class MockConnectionListProvider : public ConnectionListProvider
@@ -60,7 +61,7 @@ public:
     MockConnectionListProvider();
     virtual ~MockConnectionListProvider();
 
-    virtual QList<Connection*> getConnectionList();
+    virtual QList<Connection*> getConnectionList(QDateTime timestamp);
 };
 
 } //namespace nsKonnectionMonitor

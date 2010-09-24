@@ -35,6 +35,7 @@ private:
 
     QList<Connection*>* connections;
     ConnectionListProvider* connectionListProvider;
+    QDateTime lastRefresh;
 };
 
 } // namespace nsKonnectionMonitor

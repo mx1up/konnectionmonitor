@@ -72,7 +72,14 @@
      </widget>
     </item>
     <item row="1" column="0" colspan="5">
-     <widget class="QTableView" name="connectionTableView"/>
+     <widget class="QTableView" name="connectionTableView">
+      <property name="alternatingRowColors">
+       <bool>true</bool>
+      </property>
+      <property name="selectionBehavior">
+       <enum>QAbstractItemView::SelectRows</enum>
+      </property>
+     </widget>
     </item>
    </layout>
   </widget>
@@ -82,7 +89,7 @@
      <x>0</x>
      <y>0</y>
      <width>588</width>
-     <height>18</height>
+     <height>20</height>
     </rect>
    </property>
   </widget>

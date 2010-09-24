@@ -3,6 +3,7 @@
 
 #include <QString>
 #include <QHostAddress>
+#include <QtCore/QDateTime>
 
 namespace nsKonnectionMonitor
 {
@@ -22,8 +23,11 @@ class Connection
 {
 public:
 	Connection(QString process, ConnectionType type, ConnectionState state, QHostAddress source,
-		int sourcePort,	QHostAddress dest, int destPort, QString sourceHostname = QString(), QString destHostname = QString());
+               int sourcePort,	QHostAddress dest, int destPort, QDateTime timestamp = QDateTime::currentDateTime(),
+               QString sourceHostname = QString(), QString destHostname = QString());
 	virtual ~Connection();
+
+    bool operator==(const Connection &conn) const;
 	
 	QString process;
 	ConnectionType type;
@@ -35,6 +39,9 @@ public:
 
 	QString sourceHostname;
 	QString destHostname;
+
+    QDateTime firstSeen;
+    QDateTime lastSeen;
 };
 
 } //namespace nsKonnectionMonitor

@@ -1,8 +1,10 @@
 #include "ConnectionListModel.h"
 
+#include "Connection.h"
+#include "ConnectionListProvider.h"
+
 #include <QVariant>
 #include <QtDebug>
-#include "ConnectionListProvider.h"
 
 namespace nsKonnectionMonitor
 {
@@ -31,8 +33,8 @@ QVariant ConnectionListModel::data(const QModelIndex &index, int role) const
     if (index.row() >= connections->size())
         return QVariant();
 
+    Connection* connection = connections->at(index.row());
     if (role == Qt::DisplayRole) {
-        Connection* connection = connections->at(index.row());
         switch (index.column()) {
         case 0:
             switch (connection->state) {
@@ -93,8 +95,15 @@ QVariant ConnectionListModel::data(const QModelIndex &index, int role) const
             return QString("unknown column");
         }
     }
-    else
-        return QVariant();
+
+    if (role == Qt::DecorationRole) {
+        if (connection->lastSeen.secsTo(lastRefresh) != 0) return Qt::red;
+        if (connection->firstSeen.secsTo(lastRefresh) < 3) return Qt::green;
+        return Qt::black;
+
+    }
+
+    return QVariant();
 }
 
 QVariant ConnectionListModel::headerData(int section, Qt::Orientation orientation, int role) const
@@ -128,8 +137,26 @@ QVariant ConnectionListModel::headerData(int section, Qt::Orientation orientatio
 
 void ConnectionListModel::refresh()
 {
-    connections->clear();
-    *connections << connectionListProvider->getConnectionList();
+    lastRefresh = QDateTime::currentDateTime();
+    QList<Connection*> newConnections = connectionListProvider->getConnectionList(lastRefresh);
+    foreach (Connection* conn, newConnections) {
+        if (connections->contains(conn)) {
+            connections->at(connections->indexOf(conn))->lastSeen = conn->firstSeen;
+        } else {
+            connections->append(conn);
+        }
+    }
+    QDateTime now = QDateTime::currentDateTime();
+    QList<Connection*>::iterator it;
+    for (it = connections->begin(); it != connections->end();) {
+        Connection* conn = *it;
+        if (conn->lastSeen.secsTo(now) > 5) {
+            it = connections->erase(it);
+        } else {
+            ++it;
+        }
+    }
+
     updateView();
 }
 
