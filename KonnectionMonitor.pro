@@ -4,13 +4,15 @@ HEADERS += ConnectionListProvider.h \
     ConnectionListModel.h \
     Connection.h \
     konnectionmonitor.h \
- hostnameresolver.h
+ hostnameresolver.h \
+    config.h
 SOURCES += ConnectionListProvider.cpp \
     ConnectionListModel.cpp \
     Connection.cpp \
     main.cpp \
     konnectionmonitor.cpp \
- hostnameresolver.cpp
+ hostnameresolver.cpp \
+    config.cpp
 FORMS += konnectionmonitor.ui
 QT += gui \
     core \

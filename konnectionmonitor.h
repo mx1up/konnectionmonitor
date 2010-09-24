@@ -28,15 +28,13 @@ protected:
     virtual void closeEvent(QCloseEvent* event);
 
 private:
+    bool checkRootMode();
     void initGUI();
-    void readConfig();
-    void writeConfig();
 
     Ui::KonnectionMonitorClass ui;
     ConnectionListModel* connectionListModel;
     QTimer refreshTimer;
-    int refreshInterval;
-    bool resolveHostnames;
+    bool rootMode;
 };
 
 } // namespace 
