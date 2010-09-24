@@ -37,6 +37,6 @@ private:
     ConnectionListProvider* connectionListProvider;
 };
 
-}
+} // namespace nsKonnectionMonitor
 
 #endif /*CONNECTIONLISTMODEL_H_*/

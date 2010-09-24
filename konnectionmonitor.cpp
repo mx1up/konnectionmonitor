@@ -112,4 +112,4 @@ void KonnectionMonitor::setRefreshInterval(int interval)
     config->refreshInterval = interval;
 }
 
-} // namespace
+} // namespace nsKonnectionMonitor

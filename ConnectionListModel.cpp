@@ -138,4 +138,4 @@ void ConnectionListModel::updateView()
     reset();
 }
 
-}
+} //namespace nsKonnectionMonitor

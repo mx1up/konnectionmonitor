@@ -37,6 +37,6 @@ public:
 	QString destHostname;
 };
 
-}
+} //namespace nsKonnectionMonitor
 
 #endif /*CONNECTION_H_*/

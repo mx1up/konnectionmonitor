@@ -234,4 +234,4 @@ QList<Connection*> MockConnectionListProvider::getConnectionList()
     return connections;
 }
 
-}
+} //namespace nsKonnectionMonitor

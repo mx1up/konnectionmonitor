@@ -36,4 +36,4 @@ void HostnameResolver::lookedUp(QHostInfo hostInfo)
     }
 }
 
-}
+} //namespace nsKonnectionMonitor

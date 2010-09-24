@@ -63,6 +63,6 @@ public:
     virtual QList<Connection*> getConnectionList();
 };
 
-}
+} //namespace nsKonnectionMonitor
 
 #endif /*CONNECTIONLISTPROVIDER_H_*/

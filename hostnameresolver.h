@@ -36,6 +36,6 @@ private:
     QHash<QString, QString>* hostnameCache;
 };
 
-}
+} //namespace nsKonnectionMonitor
 
 #endif

@@ -37,6 +37,6 @@ private:
     bool rootMode;
 };
 
-} // namespace 
+} // namespace nsKonnectionMonitor
 
 #endif // KONNECTIONMONITOR_H

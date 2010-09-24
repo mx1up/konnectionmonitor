@@ -13,4 +13,4 @@ Connection::~Connection()
 {
 }
 
-}
+} //namespace nsKonnectionMonitor
