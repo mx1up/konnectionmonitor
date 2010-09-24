@@ -1,5 +1,7 @@
 #include "ConnectionListProvider.h"
 
+#include "config.h"
+
 #include <QHostAddress>
 #include <QList>
 #include "Connection.h"
@@ -31,7 +33,7 @@ ProcNetConnectionListProvider::ProcNetConnectionListProvider()
     : ConnectionListProvider()
 {
     hostnameResolver = new HostnameResolver(&hostnameCache);
-    resolveHostnames = true;
+    resolveHostnames = config->resolveHostnames;
 }
 
 ProcNetConnectionListProvider::~ProcNetConnectionListProvider()
