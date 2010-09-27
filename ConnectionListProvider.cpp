@@ -231,8 +231,9 @@ QList<Connection> MockConnectionListProvider::getConnectionList(QDateTime timest
 {
     QList<Connection> connections;
     static int counter = 0;
-    for (int i=0; i<=counter; i++) {
-        connections << Connection(QString("process %1").arg(counter), TCP, ESTBLSH, QHostAddress("127.0.0.0"), 1234, QHostAddress("127.0.0.0"), 1234, timestamp);
+    int nbConn = 5;
+    for (int i=qMax(0, counter-nbConn); i<=counter; i++) {
+        connections << Connection(QString("process %1").arg(counter), TCP, ESTBLSH, QHostAddress("127.0.0.0"), 1000+i, QHostAddress("127.0.0.0"), 1000+i, timestamp);
     }
     counter++;
     return connections;
