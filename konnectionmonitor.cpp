@@ -18,7 +18,7 @@ KonnectionMonitor::KonnectionMonitor(QWidget *parent)
 {
     config = new Config();
     rootMode = checkRootMode();
-    //	connectionListModel = new ConnectionListModel(this, new MockConnectionListProvider());
+//    connectionListModel = new ConnectionListModel(this, new MockConnectionListProvider());
     connectionListModel = new ConnectionListModel(this, new ProcNetConnectionListProvider());
     initGUI();
 }
@@ -46,6 +46,7 @@ void KonnectionMonitor::initGUI()
     ui.autoRefreshSB->setValue(config->refreshInterval);
 
     ui.connectionTableView->horizontalHeader()->setStretchLastSection(true);
+    ui.connectionTableView->verticalHeader()->setDefaultSectionSize(ui.connectionTableView->verticalHeader()->minimumSectionSize());
     ui.connectionTableView->verticalHeader()->hide();
     ui.connectionTableView->setModel(connectionListModel);
     connect(ui.refreshButton, SIGNAL(clicked()), this, SLOT(onRefreshButton_clicked()));
