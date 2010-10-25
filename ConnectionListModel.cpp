@@ -143,7 +143,9 @@ void ConnectionListModel::refresh()
         if (connections->contains(conn)) {
             (*connections)[connections->indexOf(conn)].lastSeen = conn.firstSeen;
         } else {
+            beginInsertRows(QModelIndex(), connections->size(), connections->size());
             connections->append(conn);
+            endInsertRows();
         }
     }
     QDateTime now = QDateTime::currentDateTime();
@@ -151,18 +153,14 @@ void ConnectionListModel::refresh()
     for (it = connections->begin(); it != connections->end();) {
         Connection conn = *it;
         if (conn.lastSeen.secsTo(now) > 5) {
+            int indexRemove = connections->indexOf(conn);
+            beginRemoveRows(QModelIndex(), indexRemove, indexRemove);
             it = connections->erase(it);
+            endRemoveRows();
         } else {
             ++it;
         }
     }
-
-    updateView();
-}
-
-void ConnectionListModel::updateView()
-{
-    reset();
 }
 
 } //namespace nsKonnectionMonitor
