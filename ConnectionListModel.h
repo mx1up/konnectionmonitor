@@ -24,7 +24,7 @@ public:
 
     //QAbstractTableModel impl
     int rowCount(const QModelIndex &parent = QModelIndex()) const;
-    int columnCount(const QModelIndex &parent = QModelIndex()) const { Q_UNUSED(parent); return 5;};
+    int columnCount(const QModelIndex &parent = QModelIndex()) const { Q_UNUSED(parent); return 5;}
     QVariant data(const QModelIndex &index, int role) const;
     QVariant headerData(int section, Qt::Orientation orientation, int role = Qt::DisplayRole) const;
 
