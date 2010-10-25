@@ -28,7 +28,11 @@ public:
 	virtual ~Connection();
 
     bool operator==(const Connection &conn) const;
-	
+    bool update(const Connection &conn);
+
+    bool isNew(QDateTime lastRefresh);
+    bool isStale(QDateTime lastRefresh);
+
 	QString process;
 	ConnectionType type;
 	ConnectionState state;

@@ -97,8 +97,8 @@ QVariant ConnectionListModel::data(const QModelIndex &index, int role) const
     }
 
     if (role == Qt::BackgroundColorRole) {
-        if (connection.lastSeen.secsTo(lastRefresh) != 0) return Qt::red;
-        if (connection.firstSeen.secsTo(lastRefresh) < 3) return Qt::green;
+        if (connection.isStale(lastRefresh)) return Qt::red;
+        if (connection.isNew(lastRefresh)) return Qt::green;
         return QVariant();
 
     }
@@ -141,7 +141,12 @@ void ConnectionListModel::refresh()
     QList<Connection> newConnections = connectionListProvider->getConnectionList(lastRefresh);
     foreach (Connection conn, newConnections) {
         if (connections->contains(conn)) {
-            (*connections)[connections->indexOf(conn)].lastSeen = conn.firstSeen;
+            int existingConnIndex = connections->indexOf(conn);
+            Connection& existingConn = (*connections)[existingConnIndex];
+            existingConn.lastSeen = conn.firstSeen;
+            if (existingConn.update(conn)) {
+                dataChanged(index(existingConnIndex, 0),index(existingConnIndex, 4));
+            }
         } else {
             beginInsertRows(QModelIndex(), connections->size(), connections->size());
             connections->append(conn);
@@ -152,11 +157,16 @@ void ConnectionListModel::refresh()
     QList<Connection>::iterator it;
     for (it = connections->begin(); it != connections->end();) {
         Connection conn = *it;
-        if (conn.lastSeen.secsTo(now) > 5) {
-            int indexRemove = connections->indexOf(conn);
-            beginRemoveRows(QModelIndex(), indexRemove, indexRemove);
-            it = connections->erase(it);
-            endRemoveRows();
+        if (conn.lastSeen.secsTo(now) > 0) {
+            int rowIndex = connections->indexOf(conn);
+            if (conn.lastSeen.secsTo(now) > 5) {
+                beginRemoveRows(QModelIndex(), rowIndex, rowIndex);
+                it = connections->erase(it);
+                endRemoveRows();
+            } else {
+                dataChanged(index(rowIndex, 0),index(rowIndex, 4));
+                ++it;
+            }
         } else {
             ++it;
         }

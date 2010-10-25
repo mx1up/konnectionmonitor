@@ -19,21 +19,7 @@ public:
 
     virtual QList<Connection> getConnectionList(QDateTime timestamp) = 0;
 };
-/*
-class HostnameResolver : public QObject
-{
-Q_OBJECT
-public:
-HostnameResolver(QHash<QString, QString>* hostnameCache);
-virtual ~HostnameResolver();
 
-public slots:
-void lookedUp(QHostInfo hostInfo);
-
-private:
-QHash<QString, QString>* hostnameCache;
-};
-*/
 class ProcNetConnectionListProvider : public ConnectionListProvider
 {
 public:

@@ -117,17 +117,6 @@ quint32 ProcNetConnectionListProvider::convertProcNetAddressToInt(QString addres
     address = address.mid(6, 2)+address.mid(4, 2) +address.mid(2, 2) +address.mid(0, 2);
     return (quint32)address.toUInt(NULL, 16);
 }
-/*
-    HostnameResolver::HostnameResolver(QHash<QString, QString>* hostnameCache)
-    : QObject(), hostnameCache(hostnameCache)
-    {
-    }
-    HostnameResolver::~HostnameResolver()
-    {
-    }
-
-*/
-
 
 void ProcNetConnectionListProvider::parseProcNet(QString filename, QList<Connection>* connectionList)
 {
