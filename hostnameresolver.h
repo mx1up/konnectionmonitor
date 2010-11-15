@@ -4,7 +4,7 @@
 // Description: 
 //
 //
-// Author: matthias sweertvaegher <gmatti3@gmail.com>, (C) 2007
+// Author: matthias sweertvaegher, (C) 2007
 //
 // Copyright: See COPYING file that comes with this distribution
 //
@@ -20,7 +20,7 @@
 namespace nsKonnectionMonitor {
 
 /**
-@author matthias sweertvaegher <gmatti3@gmail.com>
+@author matthias sweertvaegher
 */
 class HostnameResolver : public QObject
 {
