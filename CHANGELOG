@@ -1,0 +1,7 @@
+v0.1 / 2011-04-11 First public release
+======================================
+- optional hostname resolving
+- new / old connection highlighting
+- root mode
+- uses /proc/net
+- manual / auto refresh
