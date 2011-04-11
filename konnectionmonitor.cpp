@@ -103,7 +103,7 @@ void KonnectionMonitor::onAutoRefreshCB_toggled(bool checked)
 
 void KonnectionMonitor::onRootModeButton_clicked()
 {
-    if (QProcess::startDetached(QString("kdesu -n -c %1").arg(QApplication::applicationFilePath()))) {
+    if (QProcess::startDetached(QString("xdg-su -c %1").arg(QApplication::applicationFilePath()))) {
         close();
     }
 }
