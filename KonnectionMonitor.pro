@@ -1,5 +1,5 @@
 TEMPLATE = app
-TARGET = KonnectionMonitor
+TARGET = konnectionmonitor
 HEADERS += ConnectionListProvider.h \
     ConnectionListModel.h \
     Connection.h \
