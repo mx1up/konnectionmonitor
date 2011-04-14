@@ -2,6 +2,5 @@
 Type=Application
 Categories=System;Qt;KDE;Monitor
 Exec=konnectionmonitor
-Icon=konnectionmonitor
 Name=KonnectionMonitor
 GenericName=TCP connection monitor
