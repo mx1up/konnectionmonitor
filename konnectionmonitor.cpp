@@ -16,10 +16,12 @@ namespace nsKonnectionMonitor {
 KonnectionMonitor::KonnectionMonitor(QWidget *parent)
     : QMainWindow(parent)
 {
-    config = new Config();
     rootMode = checkRootMode();
-//    connectionListModel = new ConnectionListModel(this, new MockConnectionListProvider());
-    connectionListModel = new ConnectionListModel(this, new ProcNetConnectionListProvider());
+    if (config->debug) {
+        connectionListModel = new ConnectionListModel(this, new MockConnectionListProvider());
+    } else {
+        connectionListModel = new ConnectionListModel(this, new ProcNetConnectionListProvider());
+    }
     initGUI();
 }
 
@@ -67,6 +69,7 @@ void KonnectionMonitor::initGUI()
     }
 
     ui.autoRefreshCB->setChecked(config->autoRefresh);
+    ui.refreshButton->click();
 }
 
 void KonnectionMonitor::closeEvent(QCloseEvent* event)
