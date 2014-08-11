@@ -1,5 +1,7 @@
 #include "konnectionmonitor.h"
 
+#include "config.h"
+
 #include <QtGui>
 #include <QApplication>
 
@@ -11,7 +13,13 @@ int main(int argc, char *argv[])
     QCoreApplication::setOrganizationDomain("mattiesworld.gotdns.org");
     QCoreApplication::setApplicationName("KonnectionMonitor");
 
+    config = new Config();
     QApplication app(argc, argv);
+    QStringList args = app.arguments();
+    if (args.size() > 1 && args.at(1) == "debug") {
+        config->debug = true;
+    }
+
     KonnectionMonitor window;
     window.show();
     app.connect(&app, SIGNAL(lastWindowClosed()), &app, SLOT(quit()));

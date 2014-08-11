@@ -8,6 +8,7 @@ namespace nsKonnectionMonitor {
 Config* config;
 
 Config::Config()
+    : debug(false)
 {
         read();
 }

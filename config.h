@@ -17,6 +17,7 @@ private:
     void write();
 
 public:
+    bool debug;
     QString checkVersionURL;
     QString checkForUpdates;
     QByteArray windowGeom;
