@@ -1,3 +1,9 @@
+v0.2 / 2014-08-11
+=================
+- start refresh at startup
+- added filter box
+- sorting by column
+
 v0.1 / 2011-04-11 First public release
 ======================================
 - optional hostname resolving
@@ -5,3 +11,5 @@ v0.1 / 2011-04-11 First public release
 - root mode
 - uses /proc/net
 - manual / auto refresh
+
+2007-12-10 Initial release

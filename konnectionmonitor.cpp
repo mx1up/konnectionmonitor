@@ -8,6 +8,7 @@
 #include <QtCore/QProcess>
 #include <QtGui/QApplication>
 #include <QtCore/QCoreApplication>
+#include <QtGui/QSortFilterProxyModel>
 
 #include "ConnectionListProvider.h"
 
@@ -50,7 +51,12 @@ void KonnectionMonitor::initGUI()
     ui.connectionTableView->horizontalHeader()->setStretchLastSection(true);
     ui.connectionTableView->verticalHeader()->setDefaultSectionSize(ui.connectionTableView->verticalHeader()->minimumSectionSize());
     ui.connectionTableView->verticalHeader()->hide();
-    ui.connectionTableView->setModel(connectionListModel);
+    filterModel = new QSortFilterProxyModel(this);
+    filterModel->setFilterCaseSensitivity(Qt::CaseInsensitive);
+    filterModel->setFilterKeyColumn(-1);
+    filterModel->setDynamicSortFilter(true);
+    filterModel->setSourceModel(connectionListModel);
+    ui.connectionTableView->setModel(filterModel);
     connect(ui.refreshButton, SIGNAL(clicked()), this, SLOT(onRefreshButton_clicked()));
     connect(ui.refreshButton, SIGNAL(toggled(bool)), this, SLOT(onRefreshButton_toggled(bool)));
 
@@ -61,6 +67,7 @@ void KonnectionMonitor::initGUI()
     ui.rootModeButton->setEnabled(!rootMode);
 
     connect(&refreshTimer, SIGNAL(timeout()), this, SLOT(onRefreshButton_clicked()));
+    connect(ui.filterLE, SIGNAL(textChanged(QString)), filterModel, SLOT(setFilterWildcard(QString)));
 
     this->restoreGeometry(config->windowGeom);
     if (!ui.connectionTableView->horizontalHeader()->restoreState(config->headerState)) {

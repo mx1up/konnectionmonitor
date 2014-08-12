@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>588</width>
-    <height>400</height>
+    <width>702</width>
+    <height>504</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -15,6 +15,19 @@
   </property>
   <widget class="QWidget" name="centralwidget">
    <layout class="QGridLayout" name="gridLayout">
+    <item row="1" column="0" colspan="6">
+     <widget class="QTableView" name="connectionTableView">
+      <property name="alternatingRowColors">
+       <bool>true</bool>
+      </property>
+      <property name="selectionBehavior">
+       <enum>QAbstractItemView::SelectRows</enum>
+      </property>
+      <property name="sortingEnabled">
+       <bool>true</bool>
+      </property>
+     </widget>
+    </item>
     <item row="0" column="0">
      <widget class="QPushButton" name="refreshButton">
       <property name="text">
@@ -64,20 +77,20 @@
       </property>
      </spacer>
     </item>
-    <item row="0" column="4">
+    <item row="0" column="5">
      <widget class="QPushButton" name="rootModeButton">
       <property name="text">
        <string>Root mode</string>
       </property>
      </widget>
     </item>
-    <item row="1" column="0" colspan="5">
-     <widget class="QTableView" name="connectionTableView">
-      <property name="alternatingRowColors">
-       <bool>true</bool>
+    <item row="0" column="4">
+     <widget class="QLineEdit" name="filterLE">
+      <property name="toolTip">
+       <string>filter connections</string>
       </property>
-      <property name="selectionBehavior">
-       <enum>QAbstractItemView::SelectRows</enum>
+      <property name="placeholderText">
+       <string>Wildcard filter..</string>
       </property>
      </widget>
     </item>
@@ -88,8 +101,8 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>588</width>
-     <height>20</height>
+     <width>702</width>
+     <height>21</height>
     </rect>
    </property>
   </widget>

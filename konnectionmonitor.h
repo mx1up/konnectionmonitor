@@ -5,6 +5,8 @@
 #include <QtGui/QMainWindow>
 #include "ui_konnectionmonitor.h"
 
+class QSortFilterProxyModel;
+
 namespace nsKonnectionMonitor {
 
 class ConnectionListModel;
@@ -33,6 +35,7 @@ private:
 
     Ui::KonnectionMonitorClass ui;
     ConnectionListModel* connectionListModel;
+    QSortFilterProxyModel* filterModel;
     QTimer refreshTimer;
     bool rootMode;
 };
