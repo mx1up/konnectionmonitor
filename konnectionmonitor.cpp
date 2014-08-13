@@ -67,7 +67,7 @@ void KonnectionMonitor::initGUI()
     ui.rootModeButton->setEnabled(!rootMode);
 
     connect(&refreshTimer, SIGNAL(timeout()), this, SLOT(onRefreshButton_clicked()));
-    connect(ui.filterLE, SIGNAL(textChanged(QString)), filterModel, SLOT(setFilterWildcard(QString)));
+    connect(ui.filterLE, SIGNAL(textChanged(QString)), filterModel, SLOT(setFilterRegExp(QString)));
 
     this->restoreGeometry(config->windowGeom);
     if (!ui.connectionTableView->horizontalHeader()->restoreState(config->headerState)) {

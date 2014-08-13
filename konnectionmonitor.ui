@@ -90,7 +90,7 @@
        <string>filter connections</string>
       </property>
       <property name="placeholderText">
-       <string>Wildcard filter..</string>
+       <string>Regexp filter..</string>
       </property>
      </widget>
     </item>
@@ -102,7 +102,7 @@
      <x>0</x>
      <y>0</y>
      <width>702</width>
-     <height>21</height>
+     <height>19</height>
     </rect>
    </property>
   </widget>
