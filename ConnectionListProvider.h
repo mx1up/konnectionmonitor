@@ -31,8 +31,8 @@ public:
 private:
     void updateInodePidMap();
     QString getAppName(uint pid);
-    quint32 convertProcNetAddressToInt(QString address);
-    void parseProcNet(QString filename, QList<Connection>* connectionList);
+    QHostAddress convertProcNetAddress(QString address);
+    void parseProcNet(QString filename, ConnectionType connectionType, QList<Connection>* connectionList);
 
     QHash<quint32,quint32> inodeToPid;
     bool resolveHostnames;

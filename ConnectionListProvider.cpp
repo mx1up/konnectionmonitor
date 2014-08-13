@@ -112,18 +112,28 @@ QString ProcNetConnectionListProvider::getAppName(uint pid)
     }
 }
 
-quint32 ProcNetConnectionListProvider::convertProcNetAddressToInt(QString address)
+QHostAddress ProcNetConnectionListProvider::convertProcNetAddress(QString address)
 {
-    address = address.mid(6, 2)+address.mid(4, 2) +address.mid(2, 2) +address.mid(0, 2);
-    return (quint32)address.toUInt(NULL, 16);
+    switch(address.size()) {
+    case 8: //ipv4
+        address = address.mid(6, 2)+address.mid(4, 2) +address.mid(2, 2) +address.mid(0, 2);
+        return QHostAddress((quint32)address.toUInt(NULL, 16));
+        break;
+    case 32: //ipv6
+        return QHostAddress(address.toAscii().constData());
+        break;
+    default:
+        qWarning() << "unknown address type for " << address;
+        return QHostAddress();
+    }
+
 }
 
-void ProcNetConnectionListProvider::parseProcNet(QString filename, QList<Connection>* connectionList)
+void ProcNetConnectionListProvider::parseProcNet(QString filename, ConnectionType connectionType, QList<Connection>* connectionList)
 {
     qDebug() << "parsing" << filename;
     //	QFile file("/proc/net/tcp");
     QFile file(filename);
-    ConnectionType connectionType = TCP;
     if ( !file.open(QIODevice::ReadOnly | QIODevice::Text ) ) {
         qDebug() << "reading failed";
         return;
@@ -143,7 +153,7 @@ void ProcNetConnectionListProvider::parseProcNet(QString filename, QList<Connect
         QStringList hostParts = lineParts.at(1).split(':');
         //		qDebug() << "local host  = " << hostParts.at(0).toUInt(&isNum, 16);
         //reverse numbers
-        QHostAddress localHost(convertProcNetAddressToInt(hostParts.at(0)));
+        QHostAddress localHost = convertProcNetAddress(hostParts.at(0));
         //		qDebug() << "local host = " << localHost;
         //local port
         uint localPort = hostParts.at(1).toUInt(&isNum, 16);
@@ -152,7 +162,7 @@ void ProcNetConnectionListProvider::parseProcNet(QString filename, QList<Connect
         //remote host
         hostParts = lineParts.at(2).split(':');
         //reverse numbers
-        QHostAddress remoteHost(convertProcNetAddressToInt(hostParts.at(0)));
+        QHostAddress remoteHost = convertProcNetAddress(hostParts.at(0));
         //		qDebug() << "remote host = " << remoteHost;
         //remote port
         uint remotePort = hostParts.at(1).toUInt(&isNum, 16);
@@ -200,7 +210,10 @@ QList<Connection> ProcNetConnectionListProvider::getConnectionList(QDateTime tim
     // 	}
 
     // 	parseProcNet(QFile("C:\\tests\\KonnectionMonitor\\test\\ProcNetParser\\tcpmock.txt"), &connections);
-    parseProcNet("/proc/net/tcp", &connections);
+    parseProcNet("/proc/net/tcp", TCP, &connections);
+    parseProcNet("/proc/net/tcp6", TCP6, &connections);
+    parseProcNet("/proc/net/udp", UDP, &connections);
+    parseProcNet("/proc/net/udp6", UDP6, &connections);
     return connections;
 }
 
