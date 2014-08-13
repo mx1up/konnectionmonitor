@@ -1,6 +1,7 @@
 #include "konnectionmonitor.h"
 #include "ConnectionListModel.h"
 #include "config.h"
+#include "aboutwidget.h"
 
 #include <QtDebug>
 #include <QtGui/QHeaderView>
@@ -15,7 +16,7 @@
 namespace nsKonnectionMonitor {
 
 KonnectionMonitor::KonnectionMonitor(QWidget *parent)
-    : QMainWindow(parent)
+    : QMainWindow(parent), aboutDialog(0)
 {
     rootMode = checkRootMode();
     if (config->debug) {
@@ -77,6 +78,8 @@ void KonnectionMonitor::initGUI()
 
     ui.autoRefreshCB->setChecked(config->autoRefresh);
     ui.refreshButton->click();
+
+    connect(ui.aboutButton, SIGNAL(clicked()), this, SLOT(onActionAbout_triggered()));
 }
 
 void KonnectionMonitor::closeEvent(QCloseEvent* event)
@@ -121,6 +124,15 @@ void KonnectionMonitor::onRootModeButton_clicked()
 void KonnectionMonitor::setRefreshInterval(int interval)
 {
     config->refreshInterval = interval;
+}
+
+void KonnectionMonitor::onActionAbout_triggered() {
+    if (aboutDialog == 0) {
+        aboutDialog = new AboutWidget(this);
+        aboutDialog->setVersion(qApp->applicationVersion());
+        aboutDialog->adjustSize();
+    }
+    aboutDialog->exec();
 }
 
 } // namespace nsKonnectionMonitor

@@ -10,6 +10,7 @@ class QSortFilterProxyModel;
 namespace nsKonnectionMonitor {
 
 class ConnectionListModel;
+class AboutWidget;
 
 class KonnectionMonitor : public QMainWindow
 {
@@ -24,6 +25,7 @@ public slots:
     void onRefreshButton_toggled(bool checked);
     void onAutoRefreshCB_toggled(bool checked);
     void onRootModeButton_clicked();
+    void onActionAbout_triggered();
     void setRefreshInterval(int interval);
 
 protected:
@@ -34,6 +36,8 @@ private:
     void initGUI();
 
     Ui::KonnectionMonitorClass ui;
+    AboutWidget *aboutDialog;
+
     ConnectionListModel* connectionListModel;
     QSortFilterProxyModel* filterModel;
     QTimer refreshTimer;

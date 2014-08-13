@@ -15,19 +15,6 @@
   </property>
   <widget class="QWidget" name="centralwidget">
    <layout class="QGridLayout" name="gridLayout">
-    <item row="1" column="0" colspan="6">
-     <widget class="QTableView" name="connectionTableView">
-      <property name="alternatingRowColors">
-       <bool>true</bool>
-      </property>
-      <property name="selectionBehavior">
-       <enum>QAbstractItemView::SelectRows</enum>
-      </property>
-      <property name="sortingEnabled">
-       <bool>true</bool>
-      </property>
-     </widget>
-    </item>
     <item row="0" column="0">
      <widget class="QPushButton" name="refreshButton">
       <property name="text">
@@ -77,13 +64,6 @@
       </property>
      </spacer>
     </item>
-    <item row="0" column="5">
-     <widget class="QPushButton" name="rootModeButton">
-      <property name="text">
-       <string>Root mode</string>
-      </property>
-     </widget>
-    </item>
     <item row="0" column="4">
      <widget class="QLineEdit" name="filterLE">
       <property name="toolTip">
@@ -91,6 +71,43 @@
       </property>
       <property name="placeholderText">
        <string>Wildcard filter..</string>
+      </property>
+     </widget>
+    </item>
+    <item row="0" column="5">
+     <widget class="QPushButton" name="rootModeButton">
+      <property name="text">
+       <string>Root mode</string>
+      </property>
+     </widget>
+    </item>
+    <item row="0" column="6">
+     <widget class="QPushButton" name="aboutButton">
+      <property name="maximumSize">
+       <size>
+        <width>31</width>
+        <height>16777215</height>
+       </size>
+      </property>
+      <property name="focusPolicy">
+       <enum>Qt::NoFocus</enum>
+      </property>
+      <property name="icon">
+       <iconset resource="../EmbryoViewer/embryoviewer.qrc">
+        <normaloff>:/res/help_16.png</normaloff>:/res/help_16.png</iconset>
+      </property>
+     </widget>
+    </item>
+    <item row="1" column="0" colspan="7">
+     <widget class="QTableView" name="connectionTableView">
+      <property name="alternatingRowColors">
+       <bool>true</bool>
+      </property>
+      <property name="selectionBehavior">
+       <enum>QAbstractItemView::SelectRows</enum>
+      </property>
+      <property name="sortingEnabled">
+       <bool>true</bool>
       </property>
      </widget>
     </item>
@@ -102,12 +119,14 @@
      <x>0</x>
      <y>0</y>
      <width>702</width>
-     <height>21</height>
+     <height>19</height>
     </rect>
    </property>
   </widget>
   <widget class="QStatusBar" name="statusbar"/>
  </widget>
- <resources/>
+ <resources>
+  <include location="../EmbryoViewer/embryoviewer.qrc"/>
+ </resources>
  <connections/>
 </ui>

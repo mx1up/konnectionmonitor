@@ -19,6 +19,7 @@ set(konnectionmonitor_SRCS
 	ConnectionListProvider.cpp
 	hostnameresolver.cpp
 	konnectionmonitor.cpp
+        aboutwidget.cpp
 	main.cpp
 )
 
@@ -26,9 +27,10 @@ set(konnectionmonitor_HEADERS
 	konnectionmonitor.h
 	hostnameresolver.h
 	ConnectionListModel.h
+        aboutwidget.h
 )
 qt4_wrap_cpp(konnectionmonitor_HEADERS_MOC ${konnectionmonitor_HEADERS})
-qt4_wrap_ui(konnectionmonitor_SRCS konnectionmonitor.ui)
+qt4_wrap_ui(konnectionmonitor_SRCS konnectionmonitor.ui aboutwidget.ui)
 
 add_executable(konnectionmonitor ${konnectionmonitor_SRCS} ${konnectionmonitor_HEADERS_MOC})
 target_link_libraries(konnectionmonitor
