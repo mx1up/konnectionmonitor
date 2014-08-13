@@ -10,13 +10,15 @@ namespace nsKonnectionMonitor
 
 enum ConnectionType {
 	TCP = 0,
+    TCP6,
 	UDP,
+    UDP6,
 	RAW
 };
 
 enum ConnectionState {
 	ESTBLSH, SYNSENT, SYNRECV, FWAIT1, FWAIT2, TMEWAIT,
-	CLOSED, CLSWAIT, LASTACK, LISTEN, CLOSING, UNKNOWN
+    CLOSE, CLSWAIT, LASTACK, LISTEN, CLOSING, MAX_STATES
 };
 
 class Connection

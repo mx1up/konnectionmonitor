@@ -50,8 +50,8 @@ QVariant ConnectionListModel::data(const QModelIndex &index, int role) const
                 return "FWAIT2";
             case TMEWAIT:
                 return "TIMEWAIT";
-            case CLOSED:
-                return "CLOSED";
+            case CLOSE:
+                return "UNCONN";
             case CLSWAIT:
                 return "CLOSEWAIT";
             case LASTACK:
@@ -60,20 +60,26 @@ QVariant ConnectionListModel::data(const QModelIndex &index, int role) const
                 return "LISTEN";
             case CLOSING:
                 return "CLOSING";
-            case UNKNOWN:
-                return "UNKNOWN";
+            case MAX_STATES:
+                return "MAX STATES";
             default:
-                return "OTHER_TODO";
+                return "UNKNOWN";
             }
         case 1:
             switch (connection.type)
             {
             case TCP:
                 return "TCP";
+            case TCP6:
+                return "TCP6";
             case UDP:
                 return "UDP";
+            case UDP6:
+                return "UDP6";
             case RAW:
                 return "RAW";
+            default:
+                return "UNKNOWN";
             }
         case 2:
             if (!connection.sourceHostname.isNull()) {
