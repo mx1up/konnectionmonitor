@@ -1,5 +1,5 @@
 SET(konnectionmonitor_RESOURCES
-resources/konnectionmonitor.qrc
+res/konnectionmonitor.qrc
 )
 
 set(konnectionmonitor_HEADERS

@@ -93,8 +93,8 @@
        <enum>Qt::NoFocus</enum>
       </property>
       <property name="icon">
-       <iconset resource="../EmbryoViewer/embryoviewer.qrc">
-        <normaloff>:/res/help_16.png</normaloff>:/res/help_16.png</iconset>
+       <iconset resource="../res/konnectionmonitor.qrc">
+        <normaloff>:/icon/help16.png</normaloff>:/icon/help16.png</iconset>
       </property>
      </widget>
     </item>
@@ -126,7 +126,7 @@
   <widget class="QStatusBar" name="statusbar"/>
  </widget>
  <resources>
-  <include location="../EmbryoViewer/embryoviewer.qrc"/>
+  <include location="../res/konnectionmonitor.qrc"/>
  </resources>
  <connections/>
 </ui>
