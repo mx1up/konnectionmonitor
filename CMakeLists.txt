@@ -31,11 +31,11 @@ install(TARGETS konnectionmonitor
 
 install(FILES konnectionmonitor.desktop
         DESTINATION share/applications)
-install(FILES   konnectionmonitor16.png   DESTINATION "share/icons/hicolor/16x16/apps" RENAME "konnectionmonitor.png")
-install(FILES   konnectionmonitor22.png   DESTINATION "share/icons/hicolor/22x22/apps" RENAME "konnectionmonitor.png")
-install(FILES   konnectionmonitor32.png   DESTINATION "share/icons/hicolor/32x32/apps" RENAME "konnectionmonitor.png")
-install(FILES   konnectionmonitor48.png   DESTINATION "share/icons/hicolor/48x48/apps" RENAME "konnectionmonitor.png")
-install(FILES   konnectionmonitor64.png   DESTINATION "share/icons/hicolor/64x64/apps" RENAME "konnectionmonitor.png")
-install(FILES   konnectionmonitor128.png   DESTINATION "share/icons/hicolor/128x128/apps" RENAME "konnectionmonitor.png")
+install(FILES   res/konnectionmonitor16.png   DESTINATION "share/icons/hicolor/16x16/apps" RENAME "konnectionmonitor.png")
+install(FILES   res/konnectionmonitor22.png   DESTINATION "share/icons/hicolor/22x22/apps" RENAME "konnectionmonitor.png")
+install(FILES   res/konnectionmonitor32.png   DESTINATION "share/icons/hicolor/32x32/apps" RENAME "konnectionmonitor.png")
+install(FILES   res/konnectionmonitor48.png   DESTINATION "share/icons/hicolor/48x48/apps" RENAME "konnectionmonitor.png")
+install(FILES   res/konnectionmonitor64.png   DESTINATION "share/icons/hicolor/64x64/apps" RENAME "konnectionmonitor.png")
+install(FILES   res/konnectionmonitor128.png   DESTINATION "share/icons/hicolor/128x128/apps" RENAME "konnectionmonitor.png")
 
 #kde4_install_icons( ${ICON_INSTALL_DIR} )
