@@ -16,7 +16,10 @@ include_directories(
    )
 
 qt4_wrap_cpp(konnectionmonitor_HEADERS_MOC ${konnectionmonitor_HEADERS})
-qt4_wrap_ui(konnectionmonitor_SOURCES forms/konnectionmonitor.ui)
+qt4_wrap_ui(konnectionmonitor_SOURCES
+        forms/konnectionmonitor.ui
+        forms/aboutwidget.ui
+)
 
 add_executable(konnectionmonitor ${konnectionmonitor_SOURCES} ${konnectionmonitor_HEADERS_MOC})
 target_link_libraries(konnectionmonitor

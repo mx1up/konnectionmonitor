@@ -9,6 +9,7 @@ src/connectionlistmodel.h
 src/connectionlistprovider.h
 src/hostnameresolver.h
 src/konnectionmonitor.h
+src/aboutwidget.h
 )
 
 set(konnectionmonitor_SOURCES
@@ -19,4 +20,5 @@ src/connectionlistmodel.cpp
 src/connectionlistprovider.cpp
 src/hostnameresolver.cpp
 src/konnectionmonitor.cpp
+src/aboutwidget.cpp
 )
