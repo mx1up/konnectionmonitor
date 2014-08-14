@@ -1,8 +1,9 @@
 #ifndef CONNECTIONLISTPROVIDER_H_
 #define CONNECTIONLISTPROVIDER_H_
 
+#include "connection.h"
+
 #include <QList>
-#include "Connection.h"
 #include <QHash>
 #include <QHostInfo>
 

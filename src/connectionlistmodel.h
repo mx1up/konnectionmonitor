@@ -7,7 +7,7 @@
 #include <QList>
 #include <QHash>
 
-#include "Connection.h"
+#include "connection.h"
 
 namespace nsKonnectionMonitor
 {

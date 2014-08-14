@@ -1,10 +1,10 @@
-#include "ConnectionListProvider.h"
+#include "connectionlistprovider.h"
 
 #include "config.h"
 
 #include <QHostAddress>
 #include <QList>
-#include "Connection.h"
+#include "connection.h"
 #include <QStringList>
 #include <QDir>
 #include <QHash>

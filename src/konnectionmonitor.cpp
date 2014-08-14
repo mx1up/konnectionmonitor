@@ -1,6 +1,7 @@
 #include "konnectionmonitor.h"
-#include "ConnectionListModel.h"
+#include "connectionlistmodel.h"
 #include "config.h"
+#include "connectionlistprovider.h"
 
 #include <QtDebug>
 #include <QtGui/QHeaderView>
@@ -10,7 +11,6 @@
 #include <QtCore/QCoreApplication>
 #include <QtGui/QSortFilterProxyModel>
 
-#include "ConnectionListProvider.h"
 
 namespace nsKonnectionMonitor {
 

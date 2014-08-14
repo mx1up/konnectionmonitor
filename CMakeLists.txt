@@ -6,31 +6,19 @@ find_package(Qt4 COMPONENTS QtCore QtGui QtNetwork REQUIRED)
 # (QT_USE_FILE is a variable defined by FIND_PACKAGE( Qt4 ) that contains a path to CMake script)
 INCLUDE(${QT_USE_FILE})
 add_definitions (${QT_DEFINITIONS})
+
+include(SourceFiles.cmake)
+
 include_directories(
    ${CMAKE_SOURCE_DIR}
    ${CMAKE_BINARY_DIR}
    ${Qt4_INCLUDES}
    )
 
-set(konnectionmonitor_SRCS
-	config.cpp
-	Connection.cpp
-	ConnectionListModel.cpp
-	ConnectionListProvider.cpp
-	hostnameresolver.cpp
-	konnectionmonitor.cpp
-	main.cpp
-)
-
-set(konnectionmonitor_HEADERS
-	konnectionmonitor.h
-	hostnameresolver.h
-	ConnectionListModel.h
-)
 qt4_wrap_cpp(konnectionmonitor_HEADERS_MOC ${konnectionmonitor_HEADERS})
-qt4_wrap_ui(konnectionmonitor_SRCS konnectionmonitor.ui)
+qt4_wrap_ui(konnectionmonitor_SOURCES forms/konnectionmonitor.ui)
 
-add_executable(konnectionmonitor ${konnectionmonitor_SRCS} ${konnectionmonitor_HEADERS_MOC})
+add_executable(konnectionmonitor ${konnectionmonitor_SOURCES} ${konnectionmonitor_HEADERS_MOC})
 target_link_libraries(konnectionmonitor
 	${QT_LIBRARIES}
 )

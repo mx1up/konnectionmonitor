@@ -1,7 +1,7 @@
-#include "ConnectionListModel.h"
+#include "connectionlistmodel.h"
 
-#include "Connection.h"
-#include "ConnectionListProvider.h"
+#include "connection.h"
+#include "connectionlistprovider.h"
 
 #include <QVariant>
 #include <QtDebug>

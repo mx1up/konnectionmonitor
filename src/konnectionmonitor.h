@@ -1,9 +1,10 @@
 #ifndef KONNECTIONMONITOR_H
 #define KONNECTIONMONITOR_H
 
+#include "ui_konnectionmonitor.h"
+
 #include <QTimer>
 #include <QtGui/QMainWindow>
-#include "ui_konnectionmonitor.h"
 
 class QSortFilterProxyModel;
 
