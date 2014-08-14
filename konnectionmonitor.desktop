@@ -4,3 +4,4 @@ Categories=System;Qt;KDE;Monitor
 Exec=konnectionmonitor
 Name=KonnectionMonitor
 GenericName=TCP connection monitor
+Icon=konnectionmonitor
