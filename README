@@ -1,8 +1,8 @@
 This is a little utility I wrote a few years ago to monitor current open connections on linux, aiming to mimic tcpview for windows. It uses the proc filesystem as I found it in kernel 2.6.22 (afair). There might be better ways to do this now.
 
-Project announcement:
-Homepage: 
-Source repository:
+Project announcement: http://mattiesworld.gotdns.org/weblog/2011/04/15/project-announcement-konnectionmonitor/
+Homepage: http://mattiesworld.gotdns.org/weblog/category/coding-excursions/konnectionmonitor/
+Source repository: https://gitorious.org/konnectionmonitor
 Author: Matthias Sweertvaegher
 
 Interesting related software:
