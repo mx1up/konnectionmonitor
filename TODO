@@ -1,4 +1,3 @@
 - hostname resolving gui option
 - kill connection (use libpcap)
 - show transfer rates per connection
-- filter box
