@@ -1,15 +1,18 @@
-v0.2 / 2014-08-11
+v0.2 / 2014-08-15
 =================
-- start refresh at startup
-- added filter box
-- sorting by column
++ ipv6 support
++ show udp connections
+* start refresh at startup
++ added filter box
++ sorting by column
++ added icons
++ added about dialog
 
 v0.1 / 2011-04-11 First public release
 ======================================
-- optional hostname resolving
-- new / old connection highlighting
-- root mode
-- uses /proc/net
-- manual / auto refresh
++ optional hostname resolving via config file
++ new / old connection highlighting
++ root mode
++ manual / auto refresh
 
 2007-12-10 Initial release
