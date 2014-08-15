@@ -1,5 +1,9 @@
 <RCC>
     <qresource prefix="/icon">
         <file>help16.png</file>
+        <file>info24.png</file>
+        <file>lock24.png</file>
+        <file>refresh24.png</file>
+        <file>unlock24.png</file>
     </qresource>
 </RCC>

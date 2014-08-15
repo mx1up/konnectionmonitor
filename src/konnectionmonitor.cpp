@@ -66,6 +66,7 @@ void KonnectionMonitor::initGUI()
     connect(ui.autoRefreshSB, SIGNAL(valueChanged(int)), this, SLOT(setRefreshInterval(int)));
     connect(ui.rootModeButton, SIGNAL(clicked()), this, SLOT(onRootModeButton_clicked()));
     ui.rootModeButton->setEnabled(!rootMode);
+    ui.rootModeButton->setToolTip(rootMode ? "Root mode activated" : "Activate root mode");
 
     connect(&refreshTimer, SIGNAL(timeout()), this, SLOT(onRefreshButton_clicked()));
     connect(ui.filterLE, SIGNAL(textChanged(QString)), filterModel, SLOT(setFilterRegExp(QString)));

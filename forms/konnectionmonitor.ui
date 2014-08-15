@@ -17,8 +17,21 @@
    <layout class="QGridLayout" name="gridLayout">
     <item row="0" column="0">
      <widget class="QPushButton" name="refreshButton">
-      <property name="text">
+      <property name="toolTip">
        <string>Refresh</string>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+      <property name="icon">
+       <iconset resource="../res/konnectionmonitor.qrc">
+        <normaloff>:/icon/refresh24.png</normaloff>:/icon/refresh24.png</iconset>
+      </property>
+      <property name="iconSize">
+       <size>
+        <width>24</width>
+        <height>24</height>
+       </size>
       </property>
      </widget>
     </item>
@@ -76,25 +89,39 @@
     </item>
     <item row="0" column="5">
      <widget class="QPushButton" name="rootModeButton">
-      <property name="text">
+      <property name="toolTip">
        <string>Root mode</string>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+      <property name="icon">
+       <iconset resource="../res/konnectionmonitor.qrc">
+        <normaloff>:/icon/lock24.png</normaloff>
+        <disabledoff>:/icon/unlock24.png</disabledoff>:/icon/lock24.png</iconset>
+      </property>
+      <property name="iconSize">
+       <size>
+        <width>24</width>
+        <height>24</height>
+       </size>
       </property>
      </widget>
     </item>
     <item row="0" column="6">
      <widget class="QPushButton" name="aboutButton">
-      <property name="maximumSize">
-       <size>
-        <width>31</width>
-        <height>16777215</height>
-       </size>
-      </property>
       <property name="focusPolicy">
        <enum>Qt::NoFocus</enum>
       </property>
       <property name="icon">
        <iconset resource="../res/konnectionmonitor.qrc">
-        <normaloff>:/icon/help16.png</normaloff>:/icon/help16.png</iconset>
+        <normaloff>:/icon/info24.png</normaloff>:/icon/info24.png</iconset>
+      </property>
+      <property name="iconSize">
+       <size>
+        <width>24</width>
+        <height>24</height>
+       </size>
       </property>
      </widget>
     </item>
