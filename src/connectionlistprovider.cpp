@@ -120,7 +120,7 @@ QHostAddress ProcNetConnectionListProvider::convertProcNetAddress(QString addres
         return QHostAddress((quint32)address.toUInt(NULL, 16));
         break;
     case 32: //ipv6
-        return QHostAddress(address.toAscii().constData());
+        return QHostAddress(address.toLatin1().constData());
         break;
     default:
         qWarning() << "unknown address type for " << address;

@@ -1,31 +1,24 @@
-project(konnectionmonitor)
-cmake_minimum_required(VERSION 2.6)
-# Find the required Libaries
-find_package(Qt4 COMPONENTS QtCore QtGui QtNetwork REQUIRED)
+cmake_minimum_required(VERSION 3.1.0)
+project(konnectionmonitor VERSION 0.3.0 LANGUAGES CXX)
 
-# (QT_USE_FILE is a variable defined by FIND_PACKAGE( Qt4 ) that contains a path to CMake script)
-INCLUDE(${QT_USE_FILE})
-add_definitions (${QT_DEFINITIONS})
+set(CMAKE_CXX_STANDARD 11)
+set(CMAKE_CXX_STANDARD_REQUIRED ON)
+
+set(CMAKE_AUTOMOC ON)
+set(CMAKE_AUTORCC ON)
+set(CMAKE_AUTOUIC ON)
+
+if(CMAKE_VERSION VERSION_LESS "3.7.0")
+    set(CMAKE_INCLUDE_CURRENT_DIR ON)
+endif()
 
 include(SourceFiles.cmake)
 
-include_directories(
-   ${CMAKE_SOURCE_DIR}
-   ${CMAKE_BINARY_DIR}
-   ${Qt4_INCLUDES}
-   )
+find_package(Qt5 COMPONENTS Core Widgets Network REQUIRED)
 
-qt4_add_resources( konnectionmonitor_RESOURCES_SOURCES ${konnectionmonitor_RESOURCES} )
-qt4_wrap_cpp(konnectionmonitor_HEADERS_MOC ${konnectionmonitor_HEADERS})
-qt4_wrap_ui(konnectionmonitor_SOURCES
-        forms/konnectionmonitor.ui
-        forms/aboutwidget.ui
-)
+add_executable(konnectionmonitor ${konnectionmonitor_SOURCES} ${konnectionmonitor_HEADERS} ${konnectionmonitor_FORMS} ${konnectionmonitor_RESOURCES} )
 
-add_executable(konnectionmonitor ${konnectionmonitor_SOURCES} ${konnectionmonitor_HEADERS_MOC} ${konnectionmonitor_RESOURCES_SOURCES})
-target_link_libraries(konnectionmonitor
-	${QT_LIBRARIES}
-)
+target_link_libraries(konnectionmonitor Qt5::Widgets Qt5::Network Qt5::Core)
 
 install(TARGETS konnectionmonitor
         DESTINATION bin)

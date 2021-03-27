@@ -22,3 +22,8 @@ src/hostnameresolver.cpp
 src/konnectionmonitor.cpp
 src/aboutwidget.cpp
 )
+
+set(konnectionmonitor_FORMS
+    src/aboutwidget.ui
+    src/konnectionmonitor.ui
+)

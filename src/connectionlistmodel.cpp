@@ -3,6 +3,7 @@
 #include "connection.h"
 #include "connectionlistprovider.h"
 
+#include <QColor>
 #include <QVariant>
 #include <QtDebug>
 
@@ -103,8 +104,8 @@ QVariant ConnectionListModel::data(const QModelIndex &index, int role) const
     }
 
     if (role == Qt::BackgroundColorRole) {
-        if (connection.isStale(lastRefresh)) return Qt::red;
-        if (connection.isNew(lastRefresh)) return Qt::green;
+        if (connection.isStale(lastRefresh)) return QColor(Qt::red);
+        if (connection.isNew(lastRefresh)) return QColor(Qt::green);
         return QVariant();
 
     }

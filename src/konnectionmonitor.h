@@ -4,7 +4,7 @@
 #include "ui_konnectionmonitor.h"
 
 #include <QTimer>
-#include <QtGui/QMainWindow>
+#include <QMainWindow>
 
 class QSortFilterProxyModel;
 

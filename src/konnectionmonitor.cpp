@@ -5,12 +5,12 @@
 #include "aboutwidget.h"
 
 #include <QtDebug>
-#include <QtGui/QHeaderView>
-#include <QtCore/QSettings>
-#include <QtCore/QProcess>
-#include <QtGui/QApplication>
-#include <QtCore/QCoreApplication>
-#include <QtGui/QSortFilterProxyModel>
+#include <QHeaderView>
+#include <QSettings>
+#include <QProcess>
+#include <QApplication>
+#include <QCoreApplication>
+#include <QSortFilterProxyModel>
 
 
 namespace nsKonnectionMonitor {
@@ -73,8 +73,8 @@ void KonnectionMonitor::initGUI()
 
     this->restoreGeometry(config->windowGeom);
     if (!ui.connectionTableView->horizontalHeader()->restoreState(config->headerState)) {
-        ui.connectionTableView->horizontalHeader()->setResizeMode(QHeaderView::ResizeToContents);
-        ui.connectionTableView->horizontalHeader()->setResizeMode(QHeaderView::Interactive);
+        ui.connectionTableView->horizontalHeader()->setSectionResizeMode(QHeaderView::ResizeToContents);
+        ui.connectionTableView->horizontalHeader()->setSectionResizeMode(QHeaderView::Interactive);
     }
 
     ui.autoRefreshCB->setChecked(config->autoRefresh);
