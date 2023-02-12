@@ -16,6 +16,12 @@ include(SourceFiles.cmake)
 
 find_package(Qt5 COMPONENTS Core Widgets Network REQUIRED)
 
+add_custom_target(useful_files ALL
+    SOURCES
+      CHANGELOG
+      README
+      konnectionmonitor.spec
+)
 add_executable(konnectionmonitor ${konnectionmonitor_SOURCES} ${konnectionmonitor_HEADERS} ${konnectionmonitor_FORMS} ${konnectionmonitor_RESOURCES} )
 
 target_link_libraries(konnectionmonitor Qt5::Widgets Qt5::Network Qt5::Core)
