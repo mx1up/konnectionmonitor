@@ -1,7 +1,7 @@
 # norootforbuild
 
 Name:          konnectionmonitor
-Version:       0.3
+Version:       0.3.1
 Release:       0
 Summary:       TCPView alternative for linux
 

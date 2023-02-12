@@ -12,7 +12,7 @@ int main(int argc, char *argv[])
     QCoreApplication::setOrganizationName("Mattiesworld");
     QCoreApplication::setOrganizationDomain("mattiesworld.gotdns.org");
     QCoreApplication::setApplicationName("KonnectionMonitor");
-    QCoreApplication::setApplicationVersion("v0.2");
+    QCoreApplication::setApplicationVersion("v0.3.1");
 
     config = new Config();
     QApplication app(argc, argv);
