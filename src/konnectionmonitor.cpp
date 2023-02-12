@@ -86,8 +86,8 @@ void KonnectionMonitor::initGUI()
 void KonnectionMonitor::closeEvent(QCloseEvent* event)
 {
     QSettings settings;
-    settings.setValue("general/windowGeometry", saveGeometry());
-    settings.setValue("general/header", ui.connectionTableView->horizontalHeader()->saveState());
+    settings.setValue("windowGeometry", saveGeometry());
+    settings.setValue("header", ui.connectionTableView->horizontalHeader()->saveState());
 
     QWidget::closeEvent(event);
 }

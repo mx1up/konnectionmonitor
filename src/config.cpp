@@ -23,11 +23,11 @@ void Config::read()
         qDebug() << "Config::read()";
         QSettings settings;
 
-        windowGeom = settings.value("general/windowGeometry").toByteArray();
-        headerState = settings.value("general/header").toByteArray();
-        autoRefresh = settings.value("general/autoRefresh", true).toBool();
-        refreshInterval = settings.value("general/autoRefreshInterval", 1000).toInt();
-        resolveHostnames = settings.value("general/resolveHostNames", true).toBool();
+        windowGeom = settings.value("windowGeometry").toByteArray();
+        headerState = settings.value("header").toByteArray();
+        autoRefresh = settings.value("autoRefresh", true).toBool();
+        refreshInterval = settings.value("autoRefreshInterval", 1000).toInt();
+        resolveHostnames = settings.value("resolveHostNames", true).toBool();
 }
 
 void Config::write()
@@ -35,9 +35,9 @@ void Config::write()
         qDebug() << "Config::write()";
 
         QSettings settings;
-        settings.setValue("general/autoRefresh", autoRefresh);
-        settings.setValue("general/autoRefreshInterval", refreshInterval);
-        settings.setValue("general/resolveHostNames", config->resolveHostnames);
+        settings.setValue("autoRefresh", autoRefresh);
+        settings.setValue("autoRefreshInterval", refreshInterval);
+        settings.setValue("resolveHostNames", config->resolveHostnames);
 }
 
 } //namespace nsKonnectionMonitor
