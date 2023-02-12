@@ -112,6 +112,17 @@ QString ProcNetConnectionListProvider::getAppName(uint pid)
     }
 }
 
+QHostAddress convertBigEndian(const QString ip6address) {
+    QByteArray hexBA = QByteArray::fromHex(ip6address.toUtf8());
+    for (auto i = 0; i < 4; i++) {
+        auto word = hexBA.mid(i * 4, 4);
+        for (auto j = 0; j < 4; j++) {
+            hexBA[i*4 + j] = word[3-j];
+        }
+    }
+    return QHostAddress((const quint8*)hexBA.constData());
+}
+
 QHostAddress ProcNetConnectionListProvider::convertProcNetAddress(QString address)
 {
     switch(address.size()) {
@@ -120,7 +131,7 @@ QHostAddress ProcNetConnectionListProvider::convertProcNetAddress(QString addres
         return QHostAddress((quint32)address.toUInt(NULL, 16));
         break;
     case 32: //ipv6
-        return QHostAddress(address.toLatin1().constData());
+        return convertBigEndian(address);
         break;
     default:
         qWarning() << "unknown address type for " << address;
