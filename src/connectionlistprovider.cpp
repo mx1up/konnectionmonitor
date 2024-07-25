@@ -11,7 +11,7 @@
 #include <QString>
 #include <QHostAddress>
 #include <QTextStream>
-#include <QRegExp>
+#include <QRegularExpression>
 
 //#include <QtGlobal>
 
@@ -77,10 +77,10 @@ void ProcNetConnectionListProvider::updateInodePidMap()
             }
             QString target = fd.symLinkTarget();
             // 			qDebug() << "symlink target" << target;
-            QRegExp regexp("socket:\\[(\\d+)\\]");
-            int pos = regexp.indexIn(target);
-            if (pos > -1) {
-                QString socketInode = regexp.cap(1);
+            QRegularExpression regexp("socket:\\[(\\d+)\\]");
+            QRegularExpressionMatch match = regexp.match(target);
+            if (match.hasMatch()) {
+                QString socketInode = match.captured(1);
                 inodeToPid[socketInode.toUInt()] = pidnum;
             } else {
                 // 				qDebug() << "not a socket!";
@@ -157,7 +157,7 @@ void ProcNetConnectionListProvider::parseProcNet(QString filename, ConnectionTyp
         // 				qDebug() << line;
         if (line.isEmpty() || line.startsWith("  sl"))
             continue; // skip header and empty lines
-        QStringList lineParts = line.split(' ', QString::SkipEmptyParts);
+        QStringList lineParts = line.split(' ', Qt::SkipEmptyParts);
 
 
         //local host

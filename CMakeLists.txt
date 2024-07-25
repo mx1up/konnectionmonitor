@@ -14,7 +14,7 @@ endif()
 
 include(SourceFiles.cmake)
 
-find_package(Qt5 COMPONENTS Core Widgets Network REQUIRED)
+find_package(Qt6 COMPONENTS Core Widgets Network REQUIRED)
 
 add_custom_target(useful_files ALL
     SOURCES
@@ -24,7 +24,7 @@ add_custom_target(useful_files ALL
 )
 add_executable(konnectionmonitor ${konnectionmonitor_SOURCES} ${konnectionmonitor_HEADERS} ${konnectionmonitor_FORMS} ${konnectionmonitor_RESOURCES} )
 
-target_link_libraries(konnectionmonitor Qt5::Widgets Qt5::Network Qt5::Core)
+target_link_libraries(konnectionmonitor Qt6::Widgets Qt6::Network Qt6::Core)
 
 install(TARGETS konnectionmonitor
         DESTINATION bin)

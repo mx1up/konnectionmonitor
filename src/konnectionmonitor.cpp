@@ -69,7 +69,7 @@ void KonnectionMonitor::initGUI()
     ui.rootModeButton->setToolTip(rootMode ? "Root mode activated" : "Activate root mode");
 
     connect(&refreshTimer, SIGNAL(timeout()), this, SLOT(onRefreshButton_clicked()));
-    connect(ui.filterLE, SIGNAL(textChanged(QString)), filterModel, SLOT(setFilterRegExp(QString)));
+    connect(ui.filterLE, SIGNAL(textChanged(QString)), filterModel, SLOT(setFilterRegularExpression(QString)));
 
     this->restoreGeometry(config->windowGeom);
     if (!ui.connectionTableView->horizontalHeader()->restoreState(config->headerState)) {

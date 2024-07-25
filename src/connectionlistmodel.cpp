@@ -103,7 +103,7 @@ QVariant ConnectionListModel::data(const QModelIndex &index, int role) const
         }
     }
 
-    if (role == Qt::BackgroundColorRole) {
+    if (role == Qt::BackgroundRole) {
         if (connection.isStale(lastRefresh)) return QColor(Qt::red);
         if (connection.isNew(lastRefresh)) return QColor(Qt::green);
         return QVariant();
