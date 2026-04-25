@@ -155,7 +155,7 @@ void ProcNetConnectionListProvider::parseProcNet(QString filename, ConnectionTyp
     do {
         line = stream.readLine();
         // 				qDebug() << line;
-        if (line.isEmpty() || line.startsWith("  sl"))
+        if (line.isEmpty() || line.trimmed().startsWith("sl"))
             continue; // skip header and empty lines
         QStringList lineParts = line.split(' ', Qt::SkipEmptyParts);
 
