@@ -10,6 +10,7 @@
 //
 //
 #include "hostnameresolver.h"
+#include <qdebug.h>
 
 namespace nsKonnectionMonitor {
 
